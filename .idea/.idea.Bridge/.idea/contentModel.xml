@@ -8,6 +8,8 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="movement.cs" t="Include" />
+          <e p="rockPickup.cs" t="Include" />
+          <e p="rockStacking.cs" t="Include" />
         </e>
       </e>
       <e p="Bridge.sln" t="IncludeFlat" />
