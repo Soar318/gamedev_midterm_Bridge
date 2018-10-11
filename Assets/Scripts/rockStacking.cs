@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class rockStacking : MonoBehaviour
 {
@@ -9,10 +12,24 @@ public class rockStacking : MonoBehaviour
 	public GameObject rock1;
 	public GameObject rock2;
 	public GameObject rock3;
+	public GameObject rock4;
+	public GameObject rock5;
+	public GameObject rock6;
+	public GameObject rock7;
+	public GameObject rock8;
+
+	public Text score;
 
 	public bool rock1Loaded;
 	public bool rock2Loaded;
 	public bool rock3Loaded;
+	public bool rock4Loaded;
+	public bool rock5Loaded;
+	public bool rock6Loaded;
+	public bool rock7Loaded;
+	public bool rock8Loaded;
+
+	public bool inTrigger;
 
 	
 	// Use this for initialization
@@ -21,16 +38,35 @@ public class rockStacking : MonoBehaviour
 		rock1Loaded = false;
 		rock2Loaded = false;
 		rock3Loaded = false;
+		rock4Loaded = false;
+		rock5Loaded = false;
+		rock6Loaded = false;
+		rock7Loaded = false;
+		rock8Loaded = false;
+		score.color = new Color(0f, 0f, 0f, 0f);
+
+		inTrigger = false;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (inTrigger == true)
+		{
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				SceneManager.LoadScene("Bridge");
+			}
+		}
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
+		inTrigger = true;
+		player.GetComponent<movement>().enabled = false;
+		score.color = new Color(0f, 0f, 0f, 1f);
+		score.text = "Score: " + player.GetComponent<movement>().rockCounter + "\n Press E to Replay";		
+		
 		if (player.GetComponent<movement>().rockCounter == 1)
 		{
 			if (rock1Loaded == false)
@@ -62,5 +98,106 @@ public class rockStacking : MonoBehaviour
 			}
 
 		}
+		if (player.GetComponent<movement>().rockCounter == 4)
+		{
+			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false)
+			{
+				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				rock1Loaded = true;
+				rock2Loaded = true;
+				rock3Loaded = true;
+				rock4Loaded = true;
+			}
+
+		}
+		if (player.GetComponent<movement>().rockCounter == 5)
+		{
+			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false && rock5Loaded == false)
+			{
+				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				rock1Loaded = true;
+				rock2Loaded = true;
+				rock3Loaded = true;
+				rock4Loaded = true;
+				rock5Loaded = true;
+			}
+
+		}
+		if (player.GetComponent<movement>().rockCounter == 6)
+		{
+			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false &&
+			    rock5Loaded == false && rock6Loaded == false)
+			{
+				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock6, new Vector3(5.8f, 73.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				rock1Loaded = true;
+				rock2Loaded = true;
+				rock3Loaded = true;
+				rock4Loaded = true;
+				rock5Loaded = true;
+				rock6Loaded = true;
+			}
+
+		}
+		if (player.GetComponent<movement>().rockCounter == 7)
+		{
+			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false &&
+			    rock5Loaded == false && rock6Loaded == false && rock7Loaded == false)
+			{
+				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock6, new Vector3(5.8f, 73.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock7, new Vector3(5.8f, 74.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+
+				rock1Loaded = true;
+				rock2Loaded = true;
+				rock3Loaded = true;
+				rock4Loaded = true;
+				rock5Loaded = true;
+				rock6Loaded = true;
+				rock7Loaded = true;
+			}
+
+		}
+		if (player.GetComponent<movement>().rockCounter == 8)
+		{
+			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false &&
+			    rock5Loaded == false && rock6Loaded == false && rock7Loaded == false && rock8Loaded == false)
+			{
+				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock6, new Vector3(5.8f, 73.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock7, new Vector3(5.8f, 74.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock7, new Vector3(5.8f, 75.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+
+				rock1Loaded = true;
+				rock2Loaded = true;
+				rock3Loaded = true;
+				rock4Loaded = true;
+				rock5Loaded = true;
+				rock6Loaded = true;
+				rock7Loaded = true;
+				rock8Loaded = true;
+			}
+
+		}
+		
 	}
 }

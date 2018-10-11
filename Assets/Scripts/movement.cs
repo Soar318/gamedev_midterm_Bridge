@@ -29,7 +29,7 @@ public class movement : MonoBehaviour
 		//setting some values dont worry bout it
 		jumpTimer = .3f; 
 		jumpForce = 2f;
-		rockCounter = 3;
+		rockCounter = 0;
 	}
 	
 	// Update is called once per frame
@@ -99,4 +99,5 @@ public class movement : MonoBehaviour
 			rockCounter += 1;
 		}
 	}
+
 }
