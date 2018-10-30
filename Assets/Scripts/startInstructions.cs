@@ -7,6 +7,8 @@ public class startInstructions : MonoBehaviour
 {
 
 	public Text startInstruct;
+	public Text startInstruct2;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -20,11 +22,15 @@ public class startInstructions : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		startInstruct.color = new Color(0f, 0f, 0f, 1f);
+		startInstruct.color = new Color(1f, 1f, 1f, 1f);
+		startInstruct2.color = new Color(1f, 1f, 1f, 1f);
+
 	}
 
 	void OnTriggerExit(Collider other)
 	{
 		startInstruct.color = new Color(0f, 0f, 0f, 0f);
+		startInstruct2.color = new Color(0f, 0f, 0f, 0f);
+
 	}
 }

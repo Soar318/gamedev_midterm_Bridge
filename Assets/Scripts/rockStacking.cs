@@ -31,6 +31,8 @@ public class rockStacking : MonoBehaviour
 
 	public bool inTrigger;
 
+	public AudioSource victorySound;
+	public AudioSource bgMusic;
 	
 	// Use this for initialization
 	void Start ()
@@ -46,32 +48,44 @@ public class rockStacking : MonoBehaviour
 		score.color = new Color(0f, 0f, 0f, 0f);
 
 		inTrigger = false;
+		
+		bgMusic.Play();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (inTrigger == true)
 		{
+
 			if (Input.GetKeyDown(KeyCode.E))
 			{
 				SceneManager.LoadScene("Bridge");
 			}
+
+			bgMusic.Stop();
 		}
+
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
+		if (player.GetComponent<movement>().rockCounter > 0)
+		{
+			victorySound.Play();
+		}
+		
 		inTrigger = true;
 		player.GetComponent<movement>().enabled = false;
-		score.color = new Color(0f, 0f, 0f, 1f);
+		score.color = new Color(1f, 1f, 1f, 1f);
 		score.text = "Score: " + player.GetComponent<movement>().rockCounter + "\n Press E to Replay";		
 		
 		if (player.GetComponent<movement>().rockCounter == 1)
 		{
 			if (rock1Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 66.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 				rock1Loaded = true;
 			}
 		}
@@ -79,8 +93,8 @@ public class rockStacking : MonoBehaviour
 		{
 			if (rock1Loaded == false && rock2Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 				rock1Loaded = true;
 				rock2Loaded = true;
 			}
@@ -89,9 +103,9 @@ public class rockStacking : MonoBehaviour
 		{
 			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 24f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 				rock1Loaded = true;
 				rock2Loaded = true;
 				rock3Loaded = true;
@@ -102,10 +116,10 @@ public class rockStacking : MonoBehaviour
 		{
 			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 24f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 26f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 				rock1Loaded = true;
 				rock2Loaded = true;
 				rock3Loaded = true;
@@ -117,11 +131,11 @@ public class rockStacking : MonoBehaviour
 		{
 			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false && rock5Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 24f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 26f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 28f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 				rock1Loaded = true;
 				rock2Loaded = true;
 				rock3Loaded = true;
@@ -135,12 +149,12 @@ public class rockStacking : MonoBehaviour
 			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false &&
 			    rock5Loaded == false && rock6Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock6, new Vector3(5.8f, 73.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 24f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 26f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 28f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock6, new Vector3(5.8f, 30f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 				rock1Loaded = true;
 				rock2Loaded = true;
 				rock3Loaded = true;
@@ -155,13 +169,13 @@ public class rockStacking : MonoBehaviour
 			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false &&
 			    rock5Loaded == false && rock6Loaded == false && rock7Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock6, new Vector3(5.8f, 73.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock7, new Vector3(5.8f, 74.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 24f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 26f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 28f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock6, new Vector3(5.8f, 30f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock7, new Vector3(5.8f, 32f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 
 				rock1Loaded = true;
 				rock2Loaded = true;
@@ -178,14 +192,14 @@ public class rockStacking : MonoBehaviour
 			if (rock1Loaded == false && rock2Loaded == false && rock3Loaded == false && rock4Loaded == false &&
 			    rock5Loaded == false && rock6Loaded == false && rock7Loaded == false && rock8Loaded == false)
 			{
-				Instantiate(rock1, new Vector3(5.8f, 67.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock2, new Vector3(5.8f, 68.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock3, new Vector3(5.8f, 70.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock4, new Vector3(5.8f, 71.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock5, new Vector3(5.8f, 72.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock6, new Vector3(5.8f, 73.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock7, new Vector3(5.8f, 74.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
-				Instantiate(rock7, new Vector3(5.8f, 75.5f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock1, new Vector3(5.8f, 20f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock2, new Vector3(5.8f, 22f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock3, new Vector3(5.8f, 24f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock4, new Vector3(5.8f, 26f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock5, new Vector3(5.8f, 28f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock6, new Vector3(5.8f, 30f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock7, new Vector3(5.8f, 32f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
+				Instantiate(rock7, new Vector3(5.8f, 34f, 16.03982f), Quaternion.Euler(0f, 0f, 0f));
 
 				rock1Loaded = true;
 				rock2Loaded = true;

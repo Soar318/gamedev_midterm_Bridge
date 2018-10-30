@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Xml.Xsl;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,11 +18,16 @@ public class movement : MonoBehaviour
 
 	public bool canJump;
 	public bool fretTextOn;
+	public bool inWater;
 	
 	public Rigidbody capPlayer;
 
-	public Text fretFret; 
-	
+	public Text fretFret;
+	public Text gameOver;
+
+	public AudioSource waterSplash;
+	public AudioSource jumpSound;
+	public AudioSource bellSound;
 	
 	// Use this for initialization
 	void Start ()
@@ -34,10 +41,22 @@ public class movement : MonoBehaviour
 		fretCounter = 0;
 		fretFret.color = new Color(0f, 0f, 0f, 0f);
 		fretTextOn = false;
+		
+		gameOver.color = new Color(0f, 0f, 0f, 0f);
+		inWater = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if (inWater == true)
+		{
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				SceneManager.LoadScene("Bridge");
+			}
+			jumpForce = 0;
+		}
 		
 		if (Input.GetKey(KeyCode.W))
        	{
@@ -68,7 +87,7 @@ public class movement : MonoBehaviour
 
 		if (fretTextOn == true)
 		{
-			fretFret.color = new Color(0f, 0f, 0f, 1f);
+			fretFret.color = new Color(1f, 1f, 1f, 1f);
 			fretTimer -= Time.deltaTime;
 		}
 
@@ -198,7 +217,7 @@ public class movement : MonoBehaviour
 			if (Input.GetKey(KeyCode.Space) && jumpTimer >= 0) //if player presses space AND the
                                                       //jump timer is greater than or less than zero
 			{
-				
+				jumpSound.Play();
 				capPlayer.AddForce(transform.up * jumpForce, ForceMode.Impulse); // apply force upward multiplied
                                                   // by the amount of force
 				
@@ -224,12 +243,17 @@ public class movement : MonoBehaviour
 
 		if (collision.gameObject.tag == "Water")
 		{
-			SceneManager.LoadScene("Bridge");
+			inWater = true;
+			gameOver.color = new Color(1f, 1f, 1f, 1f);
+			gameOver.text = "Oooo you got " + rockCounter + " rocks, but you fell in the river!" +
+			                "\n Press E to try again?";
+			waterSplash.PlayOneShot(waterSplash.clip);
 		}
 
 		if (collision.gameObject.tag == "Rock")
 		{
 			rockCounter += 1;
+			bellSound.PlayOneShot(bellSound.clip);
 		}
 	}
 
